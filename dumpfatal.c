@@ -590,13 +590,13 @@ void dumpfatal_execute_internal(zend_execute_data *current_execute_data, struct 
 
 #if PHP_VERSION_ID < 50500
   if (dumpfatal_old_execute_internal) {
-    xdebug_old_execute_internal(current_execute_data, return_value_used TSRMLS_CC);
+    dumpfatal_old_execute_internal(current_execute_data, return_value_used TSRMLS_CC);
   } else {
     execute_internal(current_execute_data, return_value_used TSRMLS_CC);
   }
 #else
-  if (xdebug_old_execute_internal) {
-    xdebug_old_execute_internal(current_execute_data, fci, return_value_used TSRMLS_CC);
+  if (dumpfatal_old_execute_internal) {
+    dumpfatal_old_execute_internal(current_execute_data, fci, return_value_used TSRMLS_CC);
   } else {
     execute_internal(current_execute_data, fci, return_value_used TSRMLS_CC);
   }
